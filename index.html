@@ -1,0 +1,1158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omsai Kalekar · Java + AI Engineer</title>
+<meta name="description" content="Omsai Kalekar is a Java developer and AI engineer who builds Spring Boot microservices, workflow engines and Generative AI pipelines.">
+<meta name="theme-color" content="#0c0a09">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230c0a09'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='15' font-weight='700' text-anchor='middle' fill='%23f89820'%3E%7BO%7D%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0c0a09; --bg2:#12100e; --panel:#171412; --panel2:#1d1916; --raise:#241f1b;
+  --line:rgba(255,236,214,.08); --line2:rgba(255,236,214,.14);
+  --text:#efe8de; --muted:#a89d8f; --dim:#71685d;
+  --java:#f89820; --java-deep:#e76f00; --spring:#6db33f; --ai:#9d8cff; --cyan:#56d4c8; --rose:#ef6f6c; --gold:#e5c07b;
+  --display:'Space Grotesk',system-ui,sans-serif; --body:'Inter',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  --r:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:64px;scrollbar-color:#2a241f var(--bg)}
+body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--java);color:#120c05}
+a{color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.mono{font-family:var(--mono)}
+/* syntax */
+.k{color:var(--java)} .s{color:var(--spring)} .a{color:var(--gold)} .t{color:var(--cyan)} .c{color:var(--dim);font-style:italic} .n{color:var(--ai)} .f{color:#7fb4ff}
+
+/* ============ BOOT ============ */
+#boot{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:24px;transition:opacity .5s ease, visibility .5s}
+#boot.done{opacity:0;visibility:hidden}
+#boot pre{font-family:var(--mono);font-size:12.5px;line-height:1.55;color:var(--muted);max-width:860px;width:100%;white-space:pre-wrap;word-break:break-word}
+#boot .banner{color:var(--spring);white-space:pre;overflow:hidden}
+#boot .skip{position:fixed;bottom:22px;right:24px;font-family:var(--mono);font-size:11px;color:var(--dim);letter-spacing:.08em}
+.lv-info{color:var(--spring)} .lv-ai{color:var(--ai)} .lv-ok{color:var(--java)}
+
+/* ============ NAV ============ */
+.ide{position:fixed;top:0;left:0;right:0;z-index:50;height:52px;display:flex;align-items:stretch;background:rgba(12,10,9,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.ide .brand{display:flex;align-items:center;gap:10px;padding:0 20px;font-family:var(--mono);font-size:13px;font-weight:700;color:var(--text);text-decoration:none;border-right:1px solid var(--line);white-space:nowrap}
+.ide .brand b{color:var(--java)}
+.tabs{display:flex;overflow-x:auto;scrollbar-width:none;flex:1}
+.tabs::-webkit-scrollbar{display:none}
+.tabs a{display:flex;align-items:center;gap:8px;padding:0 18px;font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none;border-right:1px solid var(--line);white-space:nowrap;position:relative;transition:color .2s, background .2s}
+.tabs a i{font-style:normal;font-size:10px;font-weight:700;width:16px;height:16px;border-radius:4px;display:grid;place-items:center;color:#120c05}
+.tabs a:hover{color:var(--text);background:rgba(255,255,255,.02)}
+.tabs a.on{color:var(--text);background:var(--panel)}
+.tabs a.on::after{content:'';position:absolute;left:0;right:0;top:0;height:2px;background:var(--java)}
+.ic-j{background:var(--java)} .ic-x{background:var(--spring)} .ic-a{background:var(--ai)} .ic-b{background:var(--cyan)} .ic-h{background:var(--gold)}
+.ide .status{display:flex;align-items:center;gap:8px;padding:0 20px;font-family:var(--mono);font-size:11px;color:var(--muted);border-left:1px solid var(--line);white-space:nowrap}
+.ide .status .dot{width:7px;height:7px;border-radius:50%;background:var(--spring);box-shadow:0 0 10px var(--spring)}
+
+/* ============ SECTIONS ============ */
+section{position:relative;padding:120px 0}
+.path{font-family:var(--mono);font-size:12px;color:var(--dim);margin-bottom:14px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.path b{color:var(--java);font-weight:500}
+h2{font-family:var(--display);font-weight:600;font-size:clamp(32px,4.4vw,54px);line-height:1.04;letter-spacing:-.025em;margin-bottom:18px;max-width:900px}
+h2 em{font-style:normal;color:var(--java)}
+h2 .ai{color:var(--ai)}
+.lede{color:var(--muted);font-size:17px;max-width:680px}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r)}
+
+/* ============ HERO ============ */
+#main{min-height:100vh;display:flex;align-items:center;padding:110px 0 70px;overflow:hidden}
+#net{position:absolute;inset:0;width:100%;height:100%;opacity:.9}
+#main::after{content:'';position:absolute;inset:0;pointer-events:none;background:
+  radial-gradient(ellipse 60% 50% at 18% 40%, rgba(12,10,9,.92), transparent 70%),
+  linear-gradient(180deg, transparent 70%, var(--bg));}
+.hero{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.anno{font-family:var(--mono);font-size:13px;color:var(--gold);margin-bottom:18px;display:flex;flex-wrap:wrap;gap:4px 14px}
+.anno span:nth-child(2){color:var(--ai)}
+.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(48px,7.4vw,96px);line-height:.94;letter-spacing:-.04em;margin-bottom:22px}
+.hero h1 .last{background:linear-gradient(100deg,var(--java) 10%,#ffb45e 45%,var(--ai) 95%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.role{font-family:var(--mono);font-size:15px;color:var(--text);margin-bottom:18px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.role .op{color:var(--dim)}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:4px 11px;border-radius:999px;border:1px solid var(--line2);font-size:12.5px}
+.pill.j{border-color:rgba(248,152,32,.45);color:var(--java);background:rgba(248,152,32,.07)}
+.pill.ai{border-color:rgba(157,140,255,.45);color:var(--ai);background:rgba(157,140,255,.07)}
+.hero p.lead{color:var(--muted);font-size:17.5px;max-width:540px;margin-bottom:30px}
+.hero p.lead b{color:var(--text);font-weight:500}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:44px}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:13px;font-weight:500;padding:13px 20px;border-radius:10px;text-decoration:none;border:1px solid var(--line2);color:var(--text);background:var(--panel);cursor:pointer;transition:transform .2s, border-color .2s, background .2s}
+.btn:hover{transform:translateY(-2px);border-color:rgba(248,152,32,.5)}
+.btn.pri{background:var(--java);border-color:var(--java);color:#140b02;font-weight:700}
+.btn.pri:hover{background:#ffab3d}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.metrics{display:grid;grid-template-columns:repeat(4,auto);gap:10px 34px;justify-content:start}
+.metric .v{font-family:var(--display);font-size:30px;font-weight:600;letter-spacing:-.02em;line-height:1.1}
+.metric .v small{font-size:17px;color:var(--java);margin-left:1px}
+.metric .l{font-family:var(--mono);font-size:10.5px;color:var(--dim);letter-spacing:.04em}
+
+.editor{background:rgba(23,20,18,.9);border:1px solid var(--line2);border-radius:16px;box-shadow:0 40px 80px -30px rgba(0,0,0,.8), 0 0 0 1px rgba(248,152,32,.04), 0 0 90px -30px rgba(248,152,32,.25);overflow:hidden;backdrop-filter:blur(8px)}
+.ed-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--muted)}
+.ed-bar .d{width:11px;height:11px;border-radius:50%;background:#3a332d}
+.ed-bar .d:nth-child(1){background:#ef6f6c}.ed-bar .d:nth-child(2){background:#e5c07b}.ed-bar .d:nth-child(3){background:#6db33f}
+.ed-bar .fn{margin-left:10px}
+.ed-bar .run{margin-left:auto;color:var(--spring);font-size:11px}
+.ed-body{display:flex;font-family:var(--mono);font-size:13px;line-height:1.75;padding:16px 0}
+.gutter{color:#4b433b;text-align:right;padding:0 14px 0 16px;user-select:none;border-right:1px solid var(--line)}
+#code{padding:0 18px;white-space:pre;overflow-x:auto;flex:1;min-height:calc(1.75em * 14)}
+.caret{display:inline-block;width:8px;height:1.15em;background:var(--java);vertical-align:-3px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.ed-out{border-top:1px solid var(--line);padding:12px 18px;font-family:var(--mono);font-size:12px;color:var(--dim);min-height:44px}
+.ed-out .ok{color:var(--spring)}
+
+/* ============ ABOUT ============ */
+.about{display:grid;grid-template-columns:380px 1fr;gap:56px;margin-top:56px;align-items:start}
+.face{position:relative;border-radius:18px;overflow:hidden;background:#f3f1ee;aspect-ratio:1/1.08}
+.face img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block;filter:saturate(.95) contrast(1.02)}
+.face::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(12,10,9,.75))}
+.bbox{position:absolute;left:27%;top:13%;width:46%;height:47%;border:1.5px solid var(--java);border-radius:6px;z-index:2;box-shadow:0 0 0 2000px rgba(12,10,9,.0);transition:box-shadow .6s}
+.bbox::before{content:attr(data-label);position:absolute;top:-24px;left:-1.5px;background:var(--java);color:#140b02;font-family:var(--mono);font-size:10.5px;font-weight:700;padding:3px 7px;border-radius:4px 4px 4px 0;white-space:nowrap}
+.scan{position:absolute;left:0;right:0;height:60px;top:-60px;z-index:2;background:linear-gradient(180deg,transparent,rgba(157,140,255,.35),transparent);animation:scan 3.6s ease-in-out infinite}
+@keyframes scan{0%{top:-60px}60%,100%{top:110%}}
+.face .tagline{position:absolute;left:16px;right:16px;bottom:14px;z-index:3;font-family:var(--mono);font-size:11px;color:#efe8de;display:flex;justify-content:space-between;gap:8px}
+.face .tagline span:last-child{color:var(--spring)}
+.about-text p{color:var(--muted);font-size:17px;margin-bottom:18px}
+.about-text p b{color:var(--text);font-weight:500}
+.records{margin-top:30px;display:grid;gap:14px}
+.rec{padding:18px 20px;font-family:var(--mono);font-size:13px;display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:baseline}
+.rec .when{grid-column:1/-1;font-size:11px;color:var(--dim);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.rec .when .live{color:var(--spring)}
+.rec .when .live::before{content:'● ';}
+.rec h4{grid-column:1/-1;font-family:var(--display);font-weight:600;font-size:19px;letter-spacing:-.01em;color:var(--text)}
+.rec .org{grid-column:1/-1;color:var(--muted);font-size:12.5px}
+.rec.now{border-color:rgba(109,179,63,.35);background:linear-gradient(120deg,rgba(109,179,63,.07),transparent 60%),var(--panel)}
+
+/* ============ SKILLS ============ */
+.term{margin-top:52px;overflow:hidden}
+.term .ed-bar{background:var(--panel2)}
+.tree-cmd{padding:18px 22px 4px;font-family:var(--mono);font-size:13px;color:var(--muted)}
+.tree-cmd .prompt{color:var(--spring)}
+.trees{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.tree{padding:14px 22px 22px;font-family:var(--mono);font-size:13px;line-height:1.9;white-space:pre;overflow-x:auto}
+.tree + .tree{border-left:1px solid var(--line)}
+.tree .root{font-weight:700}
+.tree .g{color:var(--text)}
+.tree .br{color:#4b433b}
+.dep{color:var(--muted);padding:1px 6px;border-radius:5px;cursor:default;transition:background .15s,color .15s}
+.dep:hover{background:rgba(248,152,32,.12);color:var(--java)}
+.tree.ai .dep:hover{background:rgba(157,140,255,.14);color:var(--ai)}
+.sc{color:var(--dim);font-size:11px}
+.build{padding:14px 22px;border-top:1px solid var(--line);font-family:var(--mono);font-size:12.5px;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 18px}
+.build b{color:var(--spring)}
+
+/* ============ PROJECTS ============ */
+.projects{display:grid;gap:22px;margin-top:52px}
+.proj{padding:30px 32px;display:grid;grid-template-columns:1fr 1.15fr;gap:36px;position:relative;overflow:hidden;transition:border-color .3s}
+.proj:hover{border-color:var(--line2)}
+.proj::before{content:'';position:absolute;top:-120px;right:-120px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,var(--glow),transparent 70%);opacity:.18;pointer-events:none}
+.proj .an{font-family:var(--mono);font-size:12px;color:var(--gold);margin-bottom:12px}
+.proj .an .s{color:var(--spring)}
+.proj h3{font-family:var(--display);font-size:clamp(22px,2.4vw,30px);font-weight:600;letter-spacing:-.02em;line-height:1.12;margin-bottom:12px}
+.proj h3 small{display:block;font-size:15px;color:var(--muted);font-weight:400;letter-spacing:0;margin-top:6px}
+.proj p.sum{color:var(--muted);font-size:15px;margin-bottom:18px}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11.5px;padding:6px 11px;border-radius:7px;background:rgba(109,179,63,.1);color:var(--spring);border:1px solid rgba(109,179,63,.3);margin-bottom:18px}
+.badge::before{content:'';width:7px;height:7px;border-radius:50%;background:currentColor}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{font-family:var(--mono);font-size:11px;padding:4px 9px;border-radius:6px;background:var(--raise);color:var(--muted);border:1px solid var(--line)}
+.tests{list-style:none;font-size:14.5px;display:grid;gap:11px;align-content:start}
+.tests li{display:grid;grid-template-columns:22px 1fr;gap:8px;color:#d8cfc3}
+.tests li::before{content:'✓';font-family:var(--mono);font-size:12px;font-weight:700;color:var(--spring);width:18px;height:18px;border-radius:5px;background:rgba(109,179,63,.12);display:grid;place-items:center;margin-top:2px}
+.tests .head{display:block;font-family:var(--mono);font-size:11px;color:var(--dim);grid-template-columns:none}
+.tests .head::before{display:none}
+
+/* ============ GAME ============ */
+.game{margin-top:52px;display:grid;grid-template-columns:1.1fr .9fr;gap:22px}
+.arena{padding:26px;display:flex;flex-direction:column;align-items:stretch}
+.score{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;text-align:center;gap:10px;margin-bottom:22px}
+.score .who{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spacing:.1em;text-transform:uppercase}
+.score .pts{font-family:var(--display);font-size:46px;font-weight:700;line-height:1}
+.score .you .pts{color:var(--java)} .score .opp .pts{color:var(--ai)}
+.score .mid{font-family:var(--mono);font-size:11px;color:var(--dim)}
+.score .mid b{display:block;font-family:var(--display);font-size:20px;color:var(--muted);font-weight:600}
+.hands{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:26px 10px;margin-bottom:18px}
+.hand{font-size:clamp(54px,8vw,84px);text-align:center;line-height:1;transition:transform .25s}
+.hand.opp{filter:hue-rotate(0deg)}
+.hand.shake{animation:shake .45s ease-in-out}
+@keyframes shake{0%,100%{transform:translateY(0)}25%{transform:translateY(-14px) rotate(-8deg)}75%{transform:translateY(6px) rotate(6deg)}}
+.hand.win{transform:scale(1.14)} .hand.lose{opacity:.4;transform:scale(.9)}
+.vs{font-family:var(--mono);font-size:12px;color:var(--dim)}
+.verdict{text-align:center;font-family:var(--display);font-size:22px;font-weight:600;min-height:34px;margin-bottom:4px}
+.verdict.w{color:var(--java)} .verdict.l{color:var(--ai)} .verdict.d{color:var(--muted)}
+.subv{text-align:center;font-family:var(--mono);font-size:12px;color:var(--dim);min-height:20px;margin-bottom:20px}
+.subv b{color:var(--text);font-weight:500}
+.moves{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.move{font-size:34px;padding:16px 8px 12px;border-radius:14px;background:var(--panel2);border:1px solid var(--line2);color:var(--text);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;transition:transform .15s,border-color .2s,background .2s}
+.move small{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.move small kbd{font-family:var(--mono);font-size:10px;padding:1px 5px;border-radius:4px;border:1px solid var(--line2);color:var(--dim);margin-left:4px}
+.move:hover{transform:translateY(-3px);border-color:rgba(248,152,32,.6);background:rgba(248,152,32,.06)}
+.move:active{transform:translateY(0)}
+.move:disabled{opacity:.5;cursor:wait;transform:none}
+.arena-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:18px;font-family:var(--mono);font-size:11px;color:var(--dim);flex-wrap:wrap}
+.arena-foot button{background:none;border:0;color:var(--muted);font-family:var(--mono);font-size:11px;cursor:pointer;text-decoration:underline}
+.brain{padding:24px;display:grid;gap:22px;align-content:start}
+.brain h5{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spacing:.1em;text-transform:uppercase;font-weight:500;margin-bottom:10px;display:flex;justify-content:space-between;gap:10px}
+.brain h5 span{text-transform:none;letter-spacing:0;color:var(--muted)}
+.pbar{display:grid;grid-template-columns:28px 1fr 46px;gap:10px;align-items:center;font-family:var(--mono);font-size:12px;padding:4px 0}
+.pbar .e{font-size:18px}
+.pbar .b{height:9px;background:var(--raise);border-radius:5px;overflow:hidden}
+.pbar .b i{display:block;height:100%;width:33%;background:var(--dim);border-radius:5px;transition:width .5s ease,background .3s}
+.pbar.top .b i{background:linear-gradient(90deg,var(--ai),var(--java))}
+.pbar .v{text-align:right;color:var(--muted)}
+.expert{display:grid;grid-template-columns:1fr 70px 40px;gap:10px;align-items:center;font-family:var(--mono);font-size:11.5px;padding:5px 8px;border-radius:7px;color:var(--muted);transition:background .3s}
+.expert .b{height:5px;background:var(--raise);border-radius:3px;overflow:hidden}
+.expert .b i{display:block;height:100%;background:var(--dim);transition:width .5s}
+.expert .v{text-align:right}
+.expert.lead{background:rgba(157,140,255,.1);color:var(--text)}
+.expert.lead .b i{background:var(--ai)}
+.expert.lead span:first-child::after{content:' ← in charge';color:var(--ai)}
+.heat{display:grid;grid-template-columns:auto repeat(3,1fr);gap:4px;font-family:var(--mono);font-size:11px;align-items:center}
+.heat .h{color:var(--dim);text-align:center;font-size:14px}
+.heat .c{height:30px;border-radius:6px;display:grid;place-items:center;color:var(--text);background:rgba(248,152,32,.04);border:1px solid var(--line);transition:background .4s}
+.spark{width:100%;height:64px;display:block}
+.spark .ln{fill:none;stroke:var(--ai);stroke-width:2;stroke-linejoin:round}
+.spark .ar{fill:rgba(157,140,255,.12)}
+.spark .mid{stroke:var(--line2);stroke-dasharray:3 4}
+
+/* ============ ASK BOT ============ */
+.bot{position:fixed;right:24px;bottom:100px;z-index:60;width:390px;height:min(600px,calc(100vh - 150px));display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px -20px rgba(0,0,0,.85),0 0 0 1px rgba(248,152,32,.08);transform-origin:bottom right;transition:opacity .25s ease,transform .25s cubic-bezier(.2,.8,.2,1),visibility .25s}
+.bot:not(.open){opacity:0;visibility:hidden;transform:translateY(14px) scale(.96)}
+.bot-fab{position:fixed;right:24px;bottom:24px;z-index:61;width:66px;height:66px;border-radius:50%;overflow:visible;padding:0;border:0;cursor:pointer;display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:16px;color:#140b02;background:linear-gradient(135deg,var(--java),var(--ai));box-shadow:0 14px 34px -8px rgba(248,152,32,.55);transition:transform .2s,border-radius .3s}
+.bot-fab:hover{transform:translateY(-3px) scale(1.04)}
+.bot-fab::before{content:'';position:absolute;inset:-5px;border-radius:50%;border:2px solid rgba(248,152,32,.45);animation:fabring 2.4s ease-out infinite}
+.bot-fab.open::before{display:none}
+@keyframes fabring{0%{opacity:1;transform:scale(.92)}100%{opacity:0;transform:scale(1.25)}}
+.bot-av img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
+.bot-fab .fab-o{width:100%;height:100%;border-radius:inherit;object-fit:cover;display:block;padding-top:4px}
+.bot-fab .fab-x{display:none;font-size:20px}
+.bot-fab.open .fab-o{display:none}.bot-fab.open .fab-x{display:block}
+.bot-fab.open{border-radius:50%}
+.bot-tip{position:fixed;right:96px;bottom:36px;z-index:61;background:var(--panel2);border:1px solid var(--line2);color:var(--text);font-size:14px;padding:10px 34px 10px 14px;border-radius:12px 12px 4px 12px;box-shadow:0 12px 30px -10px rgba(0,0,0,.7);opacity:0;transform:translateX(10px);pointer-events:none;transition:opacity .4s,transform .4s}
+.bot-tip.show{opacity:1;transform:none;pointer-events:auto}
+.bot-tip button{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:0;color:var(--dim);font-size:16px;cursor:pointer;padding:4px 6px}
+.bot-head{display:flex;align-items:center;gap:14px;padding:16px 20px;border-bottom:1px solid var(--line);background:var(--panel2)}
+.bot-av{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:14px;color:#140b02;background:linear-gradient(135deg,var(--java),var(--ai));position:relative;flex-shrink:0}
+.bot-av::after{content:'';position:absolute;right:-3px;bottom:-3px;width:11px;height:11px;border-radius:50%;background:var(--spring);border:2px solid var(--panel2)}
+.bot-head b{display:block;font-family:var(--display);font-size:17px;font-weight:600}
+.bot-head span{font-family:var(--mono);font-size:11px;color:var(--spring)}
+.bot-head .clr{margin-left:auto;background:none;border:1px solid var(--line2);border-radius:8px;color:var(--muted);font-family:var(--mono);font-size:11px;padding:6px 10px;cursor:pointer}
+.bot-head .clr:hover{color:var(--text)}
+.msgs{flex:1;min-height:0;overflow-y:auto;padding:22px 20px;display:flex;flex-direction:column;gap:14px;scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--raise) transparent}
+.msgs::-webkit-scrollbar{width:8px}.msgs::-webkit-scrollbar-thumb{background:var(--raise);border-radius:8px}
+.msg{max-width:86%;display:flex;flex-direction:column;gap:6px;animation:fadein .35s ease both}
+.msg .bub{padding:11px 14px;border-radius:16px;font-size:14px;line-height:1.6}
+.msg.me{align-self:flex-end;align-items:flex-end}
+.msg.me .bub{background:var(--java);color:#140b02;border-bottom-right-radius:5px;font-weight:500}
+.msg.ai{align-self:flex-start}
+.msg.ai .bub{background:var(--raise);border:1px solid var(--line);border-bottom-left-radius:5px}
+.msg .meta{font-family:var(--mono);font-size:10.5px;color:var(--dim);padding:0 4px}
+.msg .meta i{font-style:normal;color:var(--ai)}
+.typing .bub{display:flex;gap:5px;padding:16px 18px}
+.typing .bub span{width:7px;height:7px;border-radius:50%;background:var(--muted);animation:dot 1.2s infinite}
+.typing .bub span:nth-child(2){animation-delay:.15s}.typing .bub span:nth-child(3){animation-delay:.3s}
+@keyframes dot{0%,60%,100%{opacity:.25;transform:translateY(0)}30%{opacity:1;transform:translateY(-4px)}}
+.follow{display:flex;flex-wrap:wrap;gap:7px;margin-top:2px}
+.sug{font-family:var(--mono);font-size:11.5px;padding:6px 11px;border-radius:999px;background:transparent;border:1px solid var(--line2);color:var(--muted);cursor:pointer;transition:all .2s}
+.sug:hover{color:var(--java);border-color:rgba(248,152,32,.5)}
+.bot-in{display:flex;gap:10px;padding:14px 16px;border-top:1px solid var(--line);background:var(--panel2)}
+.bot-in input{flex:1;min-width:0;background:var(--bg2);border:1px solid var(--line2);border-radius:12px;padding:13px 14px;color:var(--text);font-family:var(--body);font-size:15px;outline:none;transition:border-color .2s}
+.bot-in input:focus{border-color:var(--java)}
+.bot-note{font-family:var(--mono);font-size:10.5px;color:var(--dim);padding:0 18px 12px;background:var(--panel2)}
+
+/* ============ CONTACT ============ *//* ============ CONTACT ============ */
+.contact{margin-top:52px;display:grid;grid-template-columns:1.2fr .8fr;gap:22px}
+.http{overflow:hidden}
+.http form{padding:20px 22px;font-family:var(--mono);font-size:13px}
+.req-line{margin-bottom:14px;word-break:break-all}
+.req-line .k{font-weight:700}
+.hdr{color:var(--muted);margin-bottom:14px}
+.json{color:var(--muted);line-height:2}
+.json label{display:flex;align-items:center;gap:8px;padding-left:20px;flex-wrap:wrap}
+.json label .t{white-space:nowrap}
+.json input,.json textarea{flex:1;min-width:160px;background:var(--bg2);border:1px solid var(--line);border-radius:7px;color:var(--spring);font-family:var(--mono);font-size:13px;padding:7px 10px;outline:none;resize:vertical}
+.json input:focus,.json textarea:focus{border-color:var(--java)}
+.http .send{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;border-top:1px solid var(--line);gap:12px;flex-wrap:wrap}
+.resp{font-family:var(--mono);font-size:12px;color:var(--dim)}
+.resp .ok{color:var(--spring)}
+.links{display:grid;gap:12px;align-content:start}
+.lnk{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:18px 20px;text-decoration:none;transition:border-color .2s, transform .2s}
+.lnk:hover{border-color:rgba(248,152,32,.45);transform:translateX(4px)}
+.lnk .lk{font-family:var(--mono);font-size:10.5px;color:var(--dim);letter-spacing:.1em;text-transform:uppercase}
+.lnk .lv{font-size:15px;font-weight:500;word-break:break-all}
+.lnk .arr{font-family:var(--mono);color:var(--java)}
+footer{border-top:1px solid var(--line);padding:30px 0 40px;font-family:var(--mono);font-size:12px;color:var(--dim)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:1080px){
+  .hero{grid-template-columns:1fr;gap:44px}
+  .about{grid-template-columns:1fr}
+  .face{max-width:360px}
+  .proj{grid-template-columns:1fr;gap:22px}
+  .contact,.game{grid-template-columns:1fr}
+  .ide .status{display:none}
+}
+@media (max-width:760px){
+  .wrap{padding:0 16px}
+  section{padding:88px 0}
+  .metrics{grid-template-columns:repeat(2,auto)}
+  .trees{grid-template-columns:1fr}
+  .tree + .tree{border-left:0;border-top:1px solid var(--line)}
+  .proj{padding:24px 20px}
+  .bot{left:12px;right:12px;width:auto;bottom:88px;height:calc(100dvh - 160px)}
+  .bot-fab{right:16px;bottom:16px;width:56px;height:56px}
+  .bot-tip{right:82px;bottom:24px;font-size:13px}
+  .ed-body{font-size:11.5px}
+  .ide .brand{padding:0 14px}
+  .tabs a{padding:0 13px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ BOOT ============ -->
+<div id="boot" aria-hidden="true">
+  <pre><span class="banner">  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/</span>
+ <span class="lv-ok">:: Omsai Kalekar ::</span>        <span id="bootVer">(v5.0.0-RELEASE)</span>
+
+<span id="bootLog"></span></pre>
+  <div class="skip">click or press any key to skip ›</div>
+</div>
+
+<!-- ============ NAV ============ -->
+<nav class="ide" aria-label="Sections">
+  <a class="brand" href="#main"><b>{O}</b> omsai-kalekar</a>
+  <div class="tabs">
+    <a href="#main"><i class="ic-j">J</i>Main.java</a>
+    <a href="#about"><i class="ic-j">J</i>About.java</a>
+    <a href="#skills"><i class="ic-x">M</i>pom.xml</a>
+    <a href="#projects"><i class="ic-j">J</i>Projects.java</a>
+    <a href="#game"><i class="ic-a">AI</i>OutsmartAI.java</a>
+        <a href="#contact"><i class="ic-h">H</i>contact.http</a>
+  </div>
+  <div class="status"><span class="dot"></span><span>JVM up <span class="uptime">5.0</span>y</span><span class="vc" hidden>· <span class="vcn"></span> visitors</span></div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section id="main">
+  <canvas id="net" aria-hidden="true"></canvas>
+  <div class="wrap hero">
+    <div>
+      <div class="anno"><span>@SpringBootApplication</span><span>@EnableGenerativeAI</span></div>
+      <h1>Omsai<br><span class="last">Kalekar</span></h1>
+      <div class="role">
+        <span class="pill j">☕ Java Developer</span><span class="op">+</span><span class="pill ai">✦ AI Engineer</span>
+      </div>
+      <p class="lead">I build <b>Spring Boot microservices</b> that run in production and wire <b>LLMs</b> into them. Right now I'm a <b>Digital Engineering Analyst (Officer) at Citi Bank</b>. Before that I spent <span class="uptime-int">5</span> years at Infosys shipping regulatory platforms and an AI investigations system.</p>
+      <div class="cta">
+        <a class="btn pri" href="#game">▶ play vs my AI</a>
+        <a class="btn" href="#projects">./projects</a>
+        <a class="btn" href="Omsai_Kalekar_Resume.pdf" target="_blank" rel="noopener">↓ resume.pdf</a>
+      </div>
+      <div class="metrics">
+        <div class="metric"><div class="v"><span data-count="exp" data-dec="1">0</span><small>y+</small></div><div class="l">jvm.uptime</div></div>
+        <div class="metric"><div class="v"><span data-count="50">0</span><small>+</small></div><div class="l">apis.shipped</div></div>
+        <div class="metric"><div class="v"><span data-count="1200">0</span><small>+</small></div><div class="l">etl.jobs.migrated</div></div>
+        <div class="metric"><div class="v"><span data-count="9.8" data-dec="1">0</span><small>/10</small></div><div class="l">b.e.cgpa</div></div>
+      </div>
+    </div>
+
+    <div class="editor" role="img" aria-label="Java class describing Omsai: a Java developer who implements AI engineer">
+      <div class="ed-bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fn">OmsaiKalekar.java</span><span class="run">▶ Run</span></div>
+      <div class="ed-body">
+        <div class="gutter" id="gutter"></div>
+        <div id="code"><span class="k">public class</span> <span class="t">OmsaiKalekar</span> <span class="k">extends</span> <span class="t">JavaDeveloper</span>
+        <span class="k">implements</span> <span class="t">AIEngineer</span> {
+
+  <span class="a">@Autowired</span> <span class="k">private</span> <span class="t">SpringBoot</span> backend;
+  <span class="a">@Autowired</span> <span class="k">private</span> <span class="t">LlmProviderFactory</span> llms;
+
+  <span class="k">private final</span> <span class="t">String</span> employer = <span class="s">"Citi Bank"</span>;
+  <span class="k">private final</span> <span class="t">List</span>&lt;<span class="t">String</span>&gt; stack = <span class="t">List</span>.<span class="f">of</span>(
+      <span class="s">"Java 21"</span>, <span class="s">"Spring Boot"</span>, <span class="s">"Flowable"</span>,
+      <span class="s">"Gemini"</span>, <span class="s">"OpenAI"</span>, <span class="s">"LLMs"</span>);
+
+  <span class="a">@Override</span>
+  <span class="k">public</span> <span class="t">Solution</span> <span class="f">solve</span>(<span class="t">Problem</span> p) {
+    <span class="k">return</span> llms.<span class="f">get</span>(<span class="t">Provider</span>.<span class="n">BEST_FIT</span>)
+               .<span class="f">augment</span>(backend.<span class="f">scale</span>(p)); <span class="c">// ship it</span>
+  }
+}</div>
+      </div>
+      <div class="ed-out" id="edOut">$ java OmsaiKalekar.java</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about">
+  <div class="wrap">
+    <div class="path reveal">src / main / java / dev / omsai / <b>About.java</b></div>
+    <h2 class="reveal">Backend engineer by training. <span class="ai">AI engineer</span> by obsession.</h2>
+    <div class="about">
+      <div class="face reveal">
+        <img src="images/portrait.jpg" alt="Portrait of Omsai Kalekar" loading="lazy">
+        <div class="scan"></div>
+        <div class="bbox" data-label="engineer · 0.99"></div>
+        <div class="tagline"><span>face.embed() → [0.12, -0.84, …]</span><span>match ✓</span></div>
+      </div>
+      <div class="about-text reveal">
+        <p>I'm a <b>Java software engineer</b> with <span class="uptime">5.0</span>+ years building scalable backend systems with <b>Java, Spring Boot and microservices</b>. I write REST APIs that hold up, batch jobs that crunch millions of records, and rule engines with their own grammar.</p>
+        <p>Lately most of my work sits where <b>enterprise Java meets Generative AI</b>. I design LLM pipelines that turn messy emails, PDFs and Word docs into structured data, and I build them so the LLM vendor can be swapped at runtime without downtime.</p>
+        <div class="records">
+          <div class="rec card now">
+            <div class="when"><span>new Experience(…) · current</span><span class="live">Nov 2026 → present</span></div>
+            <h4>Officer · Digital Engineering Analyst</h4>
+            <div class="org">Citi Bank · Pune, India</div>
+          </div>
+          <div class="rec card">
+            <div class="when"><span>new Experience(…) · previous</span><span>Aug 2021 → Nov 2026</span></div>
+            <h4>Specialist Programmer L2</h4>
+            <div class="org">Infosys Limited · Pune, India</div>
+          </div>
+          <div class="rec card">
+            <div class="when"><span>new Education(…)</span><span>2021 · CGPA 9.8 / 10</span></div>
+            <h4>B.E., Bachelor of Engineering</h4>
+            <div class="org">Walchand Institute of Technology · Solapur, Maharashtra</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section id="skills">
+  <div class="wrap">
+    <div class="path reveal">project root / <b>pom.xml</b></div>
+    <h2 class="reveal">My dependencies, <em>resolved</em>.</h2>
+    <p class="lede reveal">This is the stack I ship with, shown as a Maven dependency tree. The Java runtime is on the left and the AI layer is on the right.</p>
+    <div class="term card reveal">
+      <div class="ed-bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fn">zsh · ~/omsai</span></div>
+      <div class="tree-cmd"><span class="prompt">➜</span> mvn dependency:tree -Dengineer=omsai</div>
+      <div class="trees">
+<div class="tree"><span class="root k">dev.omsai:java-core</span>:jar:<span class="uptime">5.0</span>
+<span class="br">├──</span> <span class="g">languages</span>
+<span class="br">│   ├──</span> <span class="dep">java:21</span>            <span class="sc">compile</span>
+<span class="br">│   ├──</span> <span class="dep">sql</span>                <span class="sc">compile</span>
+<span class="br">│   └──</span> <span class="dep">javacc</span>             <span class="sc">dsl-grammars</span>
+<span class="br">├──</span> <span class="g">org.springframework</span>
+<span class="br">│   ├──</span> <span class="dep">spring-boot</span>        <span class="sc">compile</span>
+<span class="br">│   ├──</span> <span class="dep">spring-mvc</span>         <span class="sc">compile</span>
+<span class="br">│   ├──</span> <span class="dep">spring-data-jpa</span>    <span class="sc">compile</span>
+<span class="br">│   └──</span> <span class="dep">microservices</span>      <span class="sc">architecture</span>
+<span class="br">├──</span> <span class="g">workflow</span>
+<span class="br">│   └──</span> <span class="dep">flowable-bpmn</span>      <span class="sc">runtime</span>
+<span class="br">├──</span> <span class="g">databases</span>
+<span class="br">│   ├──</span> <span class="dep">postgresql</span>         <span class="sc">runtime</span>
+<span class="br">│   ├──</span> <span class="dep">oracle</span>             <span class="sc">runtime</span>
+<span class="br">│   └──</span> <span class="dep">mysql</span>              <span class="sc">runtime</span>
+<span class="br">└──</span> <span class="g">devops</span>
+<span class="br">    ├──</span> <span class="dep">docker</span>             <span class="sc">provided</span>
+<span class="br">    ├──</span> <span class="dep">kubernetes</span>         <span class="sc">provided</span>
+<span class="br">    └──</span> <span class="dep">git · ci/cd</span>        <span class="sc">provided</span></div>
+<div class="tree ai"><span class="root n">dev.omsai:ai-layer</span>:jar:latest
+<span class="br">├──</span> <span class="g">generative-ai</span>
+<span class="br">│   ├──</span> <span class="dep">google-gemini-api</span>  <span class="sc">compile</span>
+<span class="br">│   ├──</span> <span class="dep">openai-api</span>         <span class="sc">compile</span>
+<span class="br">│   ├──</span> <span class="dep">llm-integration</span>    <span class="sc">compile</span>
+<span class="br">│   ├──</span> <span class="dep">prompt-engineering</span> <span class="sc">compile</span>
+<span class="br">│   └──</span> <span class="dep">semantic-search</span>    <span class="sc">runtime</span>
+<span class="br">├──</span> <span class="g">data-engineering</span>
+<span class="br">│   ├──</span> <span class="dep">python:3</span>           <span class="sc">compile</span>
+<span class="br">│   ├──</span> <span class="dep">dask</span>               <span class="sc">distributed</span>
+<span class="br">│   └──</span> <span class="dep">etl-pipelines</span>      <span class="sc">runtime</span>
+<span class="br">├──</span> <span class="g">patterns</span>
+<span class="br">│   ├──</span> <span class="dep">factory</span>            <span class="sc">llm-switching</span>
+<span class="br">│   └──</span> <span class="dep">singleton</span>          <span class="sc">compile</span>
+<span class="br">└──</span> <span class="g">ai-dev-tooling</span>
+<span class="br">    ├──</span> <span class="dep">github-copilot</span>     <span class="sc">test</span>
+<span class="br">    └──</span> <span class="dep">devin-ai</span>           <span class="sc">test</span></div>
+      </div>
+      <div class="build"><span>[INFO] 32 dependencies resolved · 0 conflicts</span><span><b>BUILD SUCCESS</b></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section id="projects">
+  <div class="wrap">
+    <div class="path reveal">src / main / java / dev / omsai / <b>Projects.java</b></div>
+    <h2 class="reveal">Shipped to <em>production</em>, with the tests to prove it.</h2>
+    <p class="lede reveal">Three systems from my Infosys years. Each green check is something I actually built.</p>
+    <div class="projects">
+
+      <article class="proj card reveal" style="--glow:var(--ai)">
+        <div>
+          <div class="an">@Service <span class="s">("ims")</span> · Nov 2025 → Nov 2026</div>
+          <h3>IMS: AI-Powered Investigations Management System<small>Infosys Limited, Pune</small></h3>
+          <div class="badge">GenAI · Workflow · REST</div>
+          <p class="sum">A centralised investigations management platform with Generative AI built in. It turns incoming documents into structured cases and runs each investigation through a managed workflow.</p>
+          <div class="chips"><span class="chip">Java</span><span class="chip">Spring Boot</span><span class="chip">Flowable</span><span class="chip">Generative AI</span><span class="chip">Gemini</span><span class="chip">OpenAI</span></div>
+        </div>
+        <ul class="tests">
+          <li class="head">ImsTest · 6 passed</li>
+          <li>Architected a GenAI pipeline that extracts entities, allegations and narratives from emails, Word docs and PDFs to auto-create structured cases.</li>
+          <li>Built a Factory pattern that switches between OpenAI and Gemini at runtime, so we can change LLM vendor with zero downtime.</li>
+          <li>Designed a dynamic, schema-driven API framework where the UI renders from API and DB config, with no frontend change per release.</li>
+          <li>Integrated the Flowable workflow engine to orchestrate the full investigation lifecycle.</li>
+          <li>Shipped AI features: translation, case summaries, investigation plans, duplicate detection and semantic search.</li>
+          <li>Built layered Spring Boot REST APIs (Controller / Service / Repository) with validation and exception handling.</li>
+        </ul>
+      </article>
+
+      <article class="proj card reveal" style="--glow:var(--spring)">
+        <div>
+          <div class="an">@Service <span class="s">("talend-exit")</span> · Sep → Oct 2025</div>
+          <h3>TalendExit: Legacy ETL Modernisation<small>Infosys Limited, Pune</small></h3>
+          <div class="badge">1,200+ jobs migrated</div>
+          <p class="sum">A Python-native replacement for the Talend ETL platform. It removed licensing costs and lets non-developer teams run data pipelines through configuration instead of code.</p>
+          <div class="chips"><span class="chip">Python</span><span class="chip">Dask</span><span class="chip">ETL</span><span class="chip">Distributed Computing</span></div>
+        </div>
+        <ul class="tests">
+          <li class="head">TalendExitTest · 4 passed</li>
+          <li>Built a Python ETL framework that fully replaces Talend and removes its licensing costs.</li>
+          <li>Engineered a JSON-driven pipeline orchestration engine with dynamic runtime configuration.</li>
+          <li>Used Dask for distributed parallel computing, which gave big performance gains at scale.</li>
+          <li>Migrated 1,200+ production ETL jobs and retired the legacy platform and its technical debt.</li>
+        </ul>
+      </article>
+
+      <article class="proj card reveal" style="--glow:var(--java)">
+        <div>
+          <div class="an">@Service <span class="s">("one-insight")</span> · Aug 2021 → Aug 2025</div>
+          <h3>OneInsight: Regulatory Reporting Platform<small>Infosys Limited, Pune</small></h3>
+          <div class="badge">4 years · millions of records</div>
+          <p class="sum">A regulatory reporting platform I worked on for four years. It runs business rules over millions of records and produces reports ready for submission.</p>
+          <div class="chips"><span class="chip">Java</span><span class="chip">Spring Boot</span><span class="chip">JavaCC</span><span class="chip">Batch Processing</span><span class="chip">Oracle</span></div>
+        </div>
+        <ul class="tests">
+          <li class="head">OneInsightTest · 6 passed</li>
+          <li>Developed 50+ REST APIs for ingestion, transformation, validation and automated regulatory reporting.</li>
+          <li>Designed a custom DSL grammar engine in JavaCC to parse business rules dynamically.</li>
+          <li>Built high-performance scheduled batch jobs that execute rules across millions of records.</li>
+          <li>Delivered Topside Adjustments, Supplementary Data Upload and end-to-end report generation.</li>
+          <li>Resolved critical production incidents to protect data integrity during live reporting cycles.</li>
+          <li>Applied Factory and Singleton patterns and led solution design across microservice boundaries.</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GAME ============ -->
+<section id="game">
+  <div class="wrap">
+    <div class="path reveal">src / main / java / dev / omsai / ai / <b>OutsmartAI.java</b></div>
+    <h2 class="reveal">Can you <em>outsmart</em> my <span class="ai">AI</span>?</h2>
+    <p class="lede reveal">It's Rock, Paper, Scissors against a model that learns how you play while you play. Five pattern detectors watch your moves, and an online ensemble trusts whichever one has been predicting you best. Humans are terrible at being random. Play 30 rounds and see if you can stay above 33%.</p>
+    <div class="game">
+      <div class="arena card reveal">
+        <div class="score">
+          <div class="you"><div class="pts" id="gYou">0</div><div class="who">you</div></div>
+          <div class="mid"><b id="gDraw">0</b>draws · round <span id="gRound">0</span></div>
+          <div class="opp"><div class="pts" id="gBot">0</div><div class="who">ai</div></div>
+        </div>
+        <div class="hands">
+          <div class="hand" id="hYou">✊</div>
+          <div class="vs">vs</div>
+          <div class="hand opp" id="hBot">🤖</div>
+        </div>
+        <div class="verdict" id="gVerdict">Make your move</div>
+        <div class="subv" id="gSub">the AI has no data on you… yet</div>
+        <div class="moves">
+          <button class="move" type="button" data-m="0">✊<small>rock<kbd>1</kbd></small></button>
+          <button class="move" type="button" data-m="1">✋<small>paper<kbd>2</kbd></small></button>
+          <button class="move" type="button" data-m="2">✌️<small>scissors<kbd>3</kbd></small></button>
+        </div>
+        <div class="arena-foot"><span id="gRate">your win rate: –</span><button type="button" id="gReset">reset model</button></div>
+      </div>
+
+      <div class="brain card reveal">
+        <div>
+          <h5>What it predicted you'd play <span id="gPredNote">waiting…</span></h5>
+          <div id="gPred"></div>
+        </div>
+        <div>
+          <h5>Ensemble · expert accuracy <span>last ~10 rounds</span></h5>
+          <div id="gExperts"></div>
+        </div>
+        <div>
+          <h5>Your habits <span>last move → next move</span></h5>
+          <div class="heat" id="gHeat"></div>
+        </div>
+        <div>
+          <h5>AI win rate over time <span id="gAiRate">–</span></h5>
+          <svg class="spark" id="gSpark" viewBox="0 0 300 64" preserveAspectRatio="none" aria-label="AI win rate over rounds"></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ --><!-- ============ CONTACT ============ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="path reveal">http / <b>contact.http</b></div>
+    <h2 class="reveal">Let's build something <em>intelligent</em>.</h2>
+    <p class="lede reveal">Fill in the request body and hit send. It opens your mail client with everything filled in.</p>
+    <div class="contact">
+      <div class="http card reveal">
+        <div class="ed-bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fn">contact.http</span></div>
+        <form id="mailForm">
+          <div class="req-line"><span class="k">POST</span> <span class="s">https://omsai.dev/api/v1/collaborate</span> HTTP/1.1</div>
+          <div class="hdr">Content-Type: application/json</div>
+          <div class="json">{
+            <label><span class="t">"name":</span><input id="fName" required placeholder="Your name"></label>
+            <label><span class="t">"company":</span><input id="fCo" placeholder="Where you work"></label>
+            <label><span class="t">"message":</span><textarea id="fMsg" rows="3" required placeholder="What should we build?"></textarea></label>
+          }</div>
+        </form>
+        <div class="send"><span class="resp" id="resp">// awaiting request…</span><button class="btn pri" form="mailForm" type="submit">Send ▶</button></div>
+      </div>
+      <div class="links">
+        <a class="lnk card reveal" href="mailto:kalekarom00@gmail.com"><div><div class="lk">email</div><div class="lv">kalekarom00@gmail.com</div></div><span class="arr">→</span></a>
+        <a class="lnk card reveal" href="https://linkedin.com/in/omsai-kalekar" target="_blank" rel="noopener"><div><div class="lk">linkedin</div><div class="lv">in/omsai-kalekar</div></div><span class="arr">↗</span></a>
+        <a class="lnk card reveal" href="tel:+919579486352"><div><div class="lk">phone</div><div class="lv">+91 95794 86352</div></div><span class="arr">→</span></a>
+        <a class="lnk card reveal" href="Omsai_Kalekar_Resume.pdf" target="_blank" rel="noopener"><div><div class="lk">résumé</div><div class="lv">Omsai_Kalekar_Resume.pdf</div></div><span class="arr">↓</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr"></span> Omsai Kalekar · Solapur / Pune, India</span>
+    <span class="vc" hidden><span style="color:var(--spring)">●</span> visitors.count = <span class="vcn" style="color:var(--text)"></span></span>
+    <span>compiled from vanilla JS · served with ☕</span>
+  </div>
+</footer>
+
+<!-- ============ ASK BOT (floating) ============ -->
+<div class="bot-tip" id="botTip">Hi! 👋 Ask me anything about Omsai<button type="button" aria-label="Dismiss" id="botTipX">×</button></div>
+<button class="bot-fab" id="botFab" type="button" aria-label="Chat with OmsaiBot" aria-expanded="false" aria-controls="botWin">
+  <img class="fab-o" src="images/bitmoji.svg" alt=""><span class="fab-x">✕</span>
+</button>
+<div class="bot card" id="botWin" role="dialog" aria-label="OmsaiBot chat">
+  <div class="bot-head">
+    <div class="bot-av"><img src="images/bitmoji.svg" alt=""></div>
+    <div><b>OmsaiBot</b><span>● online · answers from my résumé</span></div>
+    <button class="clr" type="button" id="botClear">clear</button>
+  </div>
+  <div class="msgs" id="msgs" aria-live="polite"></div>
+  <form class="bot-in" id="askForm" autocomplete="off">
+    <input id="askIn" placeholder="Ask me anything about Omsai…" aria-label="Message OmsaiBot">
+    <button class="btn pri" type="submit" aria-label="Send">➤</button>
+  </form>
+  <div class="bot-note">résumé retrieval · TF-IDF + cosine · no API calls</div>
+</div>
+
+<script>
+(() => {
+'use strict';
+const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const sleep = ms => new Promise(r => setTimeout(r, RM ? Math.min(ms, 60) : ms));
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* ---------- experience computed live, so the page never goes stale ---------- */
+const START = new Date(2021, 7, 1); // Aug 2021
+const years = (Date.now() - START) / (365.25 * 864e5);
+const exp1 = Math.floor(years * 10) / 10;
+$$('.uptime').forEach(e => e.textContent = exp1.toFixed(1));
+$$('.uptime-int').forEach(e => e.textContent = Math.floor(years));
+$('#bootVer').textContent = `(v${exp1.toFixed(1)}.0-RELEASE)`;
+$('#yr').textContent = new Date().getFullYear();
+
+/* ---------- boot sequence ---------- */
+const boot = $('#boot');
+let booted = false;
+const bootDone = [];
+function finishBoot() {
+  if (booted) return;
+  booted = true;
+  boot.classList.add('done');
+  try { sessionStorage.setItem('booted', '1'); } catch (e) {}
+  bootDone.forEach(f => f());
+}
+let seen = false;
+try { seen = sessionStorage.getItem('booted') === '1'; } catch (e) {}
+if (seen || RM) { finishBoot(); }
+else {
+  const t0 = new Date();
+  const ts = i => { const d = new Date(t0.getTime() + i * 37); return d.toISOString().slice(11, 23); };
+  const lines = [
+    ['INFO', 'lv-info', 'Starting OmsaiKalekarApplication using Java 21 with PID 2021'],
+    ['INFO', 'lv-info', 'Active profiles: "java-developer", "ai-engineer"'],
+    ['INFO', 'lv-info', 'Tomcat initialized with port 8080 (http)'],
+    ['INFO', 'lv-info', 'Flowable workflow engine started'],
+    ['AI  ', 'lv-ai',   'LlmProviderFactory registered providers: [GEMINI, OPENAI]'],
+    ['AI  ', 'lv-ai',   'Vector index built · résumé chunks embedded'],
+    ['INFO', 'lv-info', 'Current employer bean: Citi Bank, Pune · Digital Engineering Analyst'],
+    ['INFO', 'lv-ok',   `Started OmsaiKalekarApplication in ${exp1.toFixed(1)} years (JVM running since Aug 2021)`],
+  ];
+  const log = $('#bootLog');
+  (async () => {
+    for (let i = 0; i < lines.length && !booted; i++) {
+      const [lv, cls, msg] = lines[i];
+      log.insertAdjacentHTML('beforeend', `<span style="color:#4b433b">${ts(i)}</span>  <span class="${cls}">${lv}</span> --- [main] ${esc(msg)}\n`);
+      await sleep(150 + Math.random() * 120);
+    }
+    await sleep(450);
+    finishBoot();
+  })();
+  const skip = () => finishBoot();
+  boot.addEventListener('click', skip);
+  window.addEventListener('keydown', skip, { once: true });
+}
+
+/* ---------- nav active tab ---------- */
+const tabs = $$('.tabs a');
+const io = new IntersectionObserver(es => {
+  es.forEach(e => {
+    if (!e.isIntersecting) return;
+    tabs.forEach(t => {
+      const on = t.getAttribute('href') === '#' + e.target.id;
+      t.classList.toggle('on', on);
+      if (on && window.innerWidth < 1080) t.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+    });
+  });
+}, { rootMargin: '-45% 0px -50% 0px' });
+$$('section[id]').forEach(s => io.observe(s));
+
+/* ---------- reveal ---------- */
+const rio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); rio.unobserve(e.target); } }), { threshold: .12 });
+$$('.reveal').forEach(el => rio.observe(el));
+
+/* ---------- count-up metrics ---------- */
+const cio = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  cio.unobserve(e.target);
+  const el = e.target, dec = +(el.dataset.dec || 0);
+  const target = el.dataset.count === 'exp' ? exp1 : +el.dataset.count;
+  const t0 = performance.now(), dur = RM ? 1 : 1400;
+  const step = now => {
+    const p = Math.min(1, (now - t0) / dur), v = target * (1 - Math.pow(1 - p, 3));
+    el.textContent = dec ? v.toFixed(dec) : Math.round(v).toLocaleString('en-US');
+    if (p < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}), { threshold: .5 });
+$$('[data-count]').forEach(el => cio.observe(el));
+
+/* ---------- hero neural net ---------- */
+const cv = $('#net'), cx = cv.getContext('2d');
+let W, H, nodes = [], edges = [], pulses = [], layers = [5, 7, 7, 6, 3];
+function layout() {
+  const dpr = Math.min(2, window.devicePixelRatio || 1);
+  W = cv.clientWidth; H = cv.clientHeight;
+  cv.width = W * dpr; cv.height = H * dpr; cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  nodes = []; edges = [];
+  const x0 = W < 1080 ? W * .08 : W * .36, x1 = W * .96;
+  layers.forEach((n, l) => {
+    const x = x0 + (x1 - x0) * l / (layers.length - 1);
+    const col = [];
+    for (let i = 0; i < n; i++) {
+      const y = H * .14 + (H * .72) * (i + .5) / n + (l % 2 ? 18 : -10);
+      col.push({ x, y, l, a: 0 });
+    }
+    nodes.push(col);
+  });
+  for (let l = 0; l < layers.length - 1; l++)
+    nodes[l].forEach(a => nodes[l + 1].forEach(b => edges.push({ a, b })));
+}
+function fire(n) {
+  n.a = 1;
+  if (n.l >= layers.length - 1) return;
+  const next = nodes[n.l + 1];
+  const k = 1 + (Math.random() < .5 ? 1 : 0);
+  for (let i = 0; i < k; i++) {
+    const b = next[Math.random() * next.length | 0];
+    pulses.push({ a: n, b, t: 0, sp: .012 + Math.random() * .01, c: n.l < 2 ? '248,152,32' : '157,140,255' });
+  }
+}
+function burst() { nodes[0] && nodes[0].forEach(n => fire(n)); }
+let last = 0;
+function draw(now) {
+  cx.clearRect(0, 0, W, H);
+  cx.lineWidth = 1;
+  edges.forEach(e => {
+    cx.strokeStyle = 'rgba(255,236,214,0.07)';
+    cx.beginPath(); cx.moveTo(e.a.x, e.a.y); cx.lineTo(e.b.x, e.b.y); cx.stroke();
+  });
+  pulses = pulses.filter(p => {
+    p.t += p.sp;
+    if (p.t >= 1) { fire(p.b); return false; }
+    const x = p.a.x + (p.b.x - p.a.x) * p.t, y = p.a.y + (p.b.y - p.a.y) * p.t;
+    const tx = p.a.x + (p.b.x - p.a.x) * Math.max(0, p.t - .12), ty = p.a.y + (p.b.y - p.a.y) * Math.max(0, p.t - .12);
+    const g = cx.createLinearGradient(tx, ty, x, y);
+    g.addColorStop(0, `rgba(${p.c},0)`); g.addColorStop(1, `rgba(${p.c},.9)`);
+    cx.strokeStyle = g; cx.lineWidth = 1.6;
+    cx.beginPath(); cx.moveTo(tx, ty); cx.lineTo(x, y); cx.stroke();
+    return true;
+  });
+  nodes.flat().forEach(n => {
+    n.a *= .96;
+    const r = 3 + n.a * 3;
+    cx.fillStyle = n.l < 2 ? `rgba(248,152,32,${.28 + n.a * .7})` : `rgba(157,140,255,${.28 + n.a * .7})`;
+    if (n.a > .05) { cx.shadowBlur = 18 * n.a; cx.shadowColor = n.l < 2 ? '#f89820' : '#9d8cff'; }
+    cx.beginPath(); cx.arc(n.x, n.y, r, 0, Math.PI * 2); cx.fill();
+    cx.shadowBlur = 0;
+  });
+  if (now - last > 650 && pulses.length < 60) { last = now; fire(nodes[0][Math.random() * nodes[0].length | 0]); fire(nodes[0][Math.random() * nodes[0].length | 0]); }
+  if (!RM) requestAnimationFrame(draw);
+}
+layout();
+window.addEventListener('resize', () => { layout(); if (RM) draw(0); });
+if (RM) draw(0); else requestAnimationFrame(draw);
+
+/* ---------- typing code editor ---------- */
+const code = $('#code'), gutter = $('#gutter');
+const lineCount = code.textContent.split('\n').length;
+gutter.innerHTML = Array.from({ length: lineCount }, (_, i) => i + 1).join('<br>');
+function typeCode() {
+  if (RM) { finishCode(); return; }
+  const walker = document.createTreeWalker(code, NodeFilter.SHOW_TEXT);
+  const texts = []; let n;
+  while ((n = walker.nextNode())) { texts.push([n, n.textContent]); n.textContent = ''; }
+  const caret = document.createElement('span'); caret.className = 'caret';
+  let ti = 0, ci = 0;
+  const tick = () => {
+    for (let k = 0; k < 3 && ti < texts.length; k++) {
+      const [node, full] = texts[ti];
+      ci++; node.textContent = full.slice(0, ci);
+      node.parentNode.insertBefore(caret, node.nextSibling);
+      if (ci >= full.length) { ti++; ci = 0; }
+    }
+    if (ti < texts.length) setTimeout(tick, 16);
+    else { setTimeout(() => caret.remove(), 900); finishCode(); }
+  };
+  tick();
+}
+async function finishCode() {
+  const out = $('#edOut');
+  await sleep(300);
+  out.innerHTML = '$ java OmsaiKalekar.java<br><span class="ok">✓ Solution delivered · 0 errors · forward pass complete</span>';
+  burst();
+}
+bootDone.push(() => setTimeout(typeCode, 350));
+if (booted) typeCode();
+
+/* ---------- in-browser RAG over résumé ---------- */
+const Y = exp1.toFixed(1);
+const CHUNKS = [
+  ['role.current', 'current role job now currently citi bank officer digital engineering analyst where work today employer company',
+   'Omsai is an Officer, Digital Engineering Analyst at Citi Bank in Pune, India. He has been there since November 2026.'],
+  ['role.previous', 'infosys specialist programmer l2 previous past before prior earlier job 2021 2026 career history',
+   'Before Citi Bank, Omsai was a Specialist Programmer L2 at Infosys Limited in Pune from August 2021 to November 2026.'],
+  ['experience.years', 'how many years experience total long working since senior career',
+   `Omsai has ${Y}+ years of professional experience. He started in August 2021 building Java and Spring Boot backends and has moved into Generative AI.`],
+  ['skills.java', 'java spring boot mvc data jpa microservices backend rest api skills languages framework tech stack technologies tools',
+   'His core stack is Java 21, Spring Boot, Spring MVC, Spring Data JPA and microservices. He has shipped 50+ REST APIs with a layered Controller/Service/Repository design.'],
+  ['skills.genai', 'llm genai generative ai openai gemini prompt engineering ai skills models machine learning',
+   'On the AI side he integrates LLMs (Google Gemini and OpenAI APIs) into enterprise Java systems. That covers prompt engineering, structured extraction, summaries, semantic search.'],
+  ['ims.overview', 'ims investigation management system project flagship case management ai powered centralised',
+   'IMS is a centralised, AI-powered Investigations Management System he worked on at Infosys from November 2025. He built its Spring Boot APIs, Flowable workflow and Generative AI features.'],
+  ['ims.genai', 'built llm extraction pipeline emails pdf word documents entities allegations narratives automatic case creation',
+   'He architected a Generative AI pipeline that extracts entities, allegations and narratives from emails, Word docs and PDFs to auto-create structured cases in IMS.'],
+  ['ims.factory', 'factory pattern switch openai gemini runtime provider vendor zero downtime design pattern',
+   'He built a Factory pattern that switches between OpenAI and Gemini at runtime, so the team can change LLM vendor with zero downtime.'],
+  ['ims.features', 'ai features translation summary investigation plan duplicate detection semantic search ',
+   'The AI features he shipped in IMS include document translation, case summaries, investigation plan generation, duplicate detection and semantic search.'],
+  ['ims.flowable', 'flowable workflow bpmn engine orchestration lifecycle state machine process',
+   'He integrated the Flowable workflow engine to orchestrate the full investigation lifecycle in IMS.'],
+  ['ims.schema', 'dynamic schema driven api framework ui renders configuration database frontend release',
+   'He designed a dynamic, schema-driven API framework where the UI renders from API and DB configuration, so releases need no frontend changes.'],
+  ['talendexit', 'talend etl python dask migration data pipeline framework json licensing talendexit',
+   'TalendExit is a Python ETL framework he built to replace Talend. It has JSON-driven orchestration and Dask for distributed computing, and it migrated 1,200+ production ETL jobs.'],
+  ['oneinsight', 'oneinsight regulatory reporting platform batch jobs millions records rules reports topside',
+   'OneInsight is a regulatory reporting platform he worked on for four years (2021–2025). He built 50+ APIs, batch jobs over millions of records, Topside Adjustments and the report-generation pipelines.'],
+  ['javacc', 'javacc dsl grammar parser rule engine compiler business rules custom language',
+   'He designed a custom DSL grammar engine with JavaCC that parses business rules dynamically for the OneInsight platform.'],
+  ['databases', 'database sql postgres postgresql oracle mysql data storage',
+   'He works with PostgreSQL, Oracle and MySQL.'],
+  ['devops', 'docker kubernetes git ci cd devops cloud deployment containers',
+   'For delivery he uses Docker, Kubernetes, Git and CI/CD pipelines.'],
+  ['ai.tooling', 'copilot devin ai tools coding assistant productivity',
+   'He builds with AI coding tools like GitHub Copilot and Devin AI to speed up development and review.'],
+  ['projects', 'projects built worked portfolio work there main notable list',
+   'His main projects at Infosys were IMS (an AI-powered investigations management system), TalendExit (a Python ETL framework that replaced Talend) and OneInsight (a regulatory reporting platform). Ask me about any of them!'],
+  ['education', 'education degree college university cgpa engineering walchand study graduate',
+   'He holds a B.E. from Walchand Institute of Technology, Solapur (2021), with a CGPA of 9.8/10.'],
+  ['contact', 'contact email hire reach phone linkedin connect message',
+   'You can reach Omsai at kalekarom00@gmail.com or on LinkedIn at in/omsai-kalekar. The form at the bottom of this page works too.'],
+  ['location', 'location where based live city india solapur pune',
+   'He is from Solapur, Maharashtra, and is based in Pune, India, where he works at Citi Bank.'],
+  ['production', 'production incidents support reliability data integrity on call fix bugs',
+   'He has resolved critical production incidents to protect data integrity during live regulatory reporting cycles.'],
+];
+const STOP = new Set('a an the is are was were be been of in on at to for and or with by from as it its he his him she her they what which who whom how does do did has have had i me my you your about tell can could would should this that there their any some'.split(' '));
+const stem = w => w.length > 4 ? w.replace(/(ing|ed|es|s)$/, '') : w;
+const tok = s => s.toLowerCase().replace(/[^a-z0-9+#.]+/g, ' ').split(' ').map(w => w.replace(/^\.+|\.+$/g, '')).filter(w => w && !STOP.has(w)).map(stem);
+const docsTok = CHUNKS.map(([id, kw, ans]) => tok(kw + ' ' + kw + ' ' + ans + ' ' + id.replace('.', ' ')));
+const df = new Map();
+docsTok.forEach(t => new Set(t).forEach(w => df.set(w, (df.get(w) || 0) + 1)));
+const N = CHUNKS.length;
+const idf = w => Math.log((N + 1) / ((df.get(w) || 0) + 1)) + 1;
+const vecOf = t => { const m = new Map(); t.forEach(w => m.set(w, (m.get(w) || 0) + 1)); m.forEach((v, k) => m.set(k, v * idf(k))); return m; };
+const norm = m => Math.sqrt([...m.values()].reduce((a, v) => a + v * v, 0)) || 1;
+const DV = docsTok.map(vecOf), DN = DV.map(norm);
+const FOLLOW = {
+  'role.current': ['What did he do before Citi?', 'How many years of experience?'],
+  'role.previous': ['What projects did he build there?', 'What is his tech stack?'],
+  'projects': ['Tell me about IMS', 'Tell me about TalendExit', 'Tell me about OneInsight'],
+  'experience.years': ['Where does he work now?', 'What are his Java skills?'],
+  'skills.java': ['What has he built with LLMs?', 'Which databases?'],
+  'skills.genai': ['Tell me about the Factory pattern', 'What AI features did he ship?'],
+  'ims.overview': ['What has he built with LLMs?', 'How did he use Flowable?'],
+  'ims.genai': ['Tell me about the Factory pattern', 'What AI features did he ship?'],
+  'ims.factory': ['What has he built with LLMs?', 'Tell me about TalendExit'],
+  'talendexit': ['Tell me about OneInsight', 'What is Dask used for?'],
+  'oneinsight': ['What is the JavaCC DSL?', 'Tell me about TalendExit'],
+  'education': ['Where does he work now?', 'How can I contact him?'],
+};
+const DEFAULT_FOLLOW = ['Where does he work now?', 'What has he built with LLMs?', 'How can I contact him?'];
+const SMALL = [
+  [/^(hi|hello|hey|yo|hola|namaste|good (morning|afternoon|evening))\b/i, "Hey there! 👋 I'm OmsaiBot. Ask me about Omsai's experience, projects or skills."],
+  [/\b(thanks|thank you|thx|cool|great|awesome|nice)\b/i, "Happy to help! Anything else you'd like to know?"],
+  [/\b(who|what) are you\b|\bare you (a bot|real|human|ai)\b/i, "I'm a small retrieval bot that lives in this page. I match your question against chunks of Omsai's résumé and answer from the best match. No LLM, so no hallucinations."],
+  [/\b(bye|goodbye|see you|cya)\b/i, "Bye! If you'd like to talk to the real Omsai, the contact form is just below. 👇"],
+  [/\b(hire|recruit|available|opportunit|open to)\b/i, "Omsai is always happy to talk about interesting Java and AI work. The best way to reach him is kalekarom00@gmail.com or LinkedIn (in/omsai-kalekar)."],
+];
+function retrieve(q) {
+  const qv = vecOf(tok(q)), qn = norm(qv);
+  return DV.map((dv, i) => { let dot = 0; qv.forEach((v, k) => { if (dv.has(k)) dot += v * dv.get(k); }); return [i, dot / (qn * DN[i])]; })
+    .sort((a, b) => b[1] - a[1])[0];
+}
+const msgs = $('#msgs');
+function addMsg(who, html, meta) {
+  const m = document.createElement('div'); m.className = 'msg ' + who;
+  m.innerHTML = `<div class="bub">${html}</div>${meta ? `<div class="meta">${meta}</div>` : ''}`;
+  msgs.appendChild(m); msgs.scrollTop = msgs.scrollHeight; return m;
+}
+let botBusy = false;
+async function ask(q) {
+  if (botBusy) return; botBusy = true;
+  $$('#msgs .follow').forEach(f => f.remove());
+  addMsg('me', esc(q));
+  const typing = addMsg('ai typing', '<span></span><span></span><span></span>');
+  let text, meta, follow;
+  const small = SMALL.find(([re]) => re.test(q.trim()));
+  if (small) { text = small[1]; meta = 'small talk'; follow = DEFAULT_FOLLOW; }
+  else {
+    const [i, sim] = retrieve(q);
+    if (sim > 0.08) { text = CHUNKS[i][2]; meta = `source: <i>${esc(CHUNKS[i][0])}</i> · similarity ${sim.toFixed(2)}`; follow = FOLLOW[CHUNKS[i][0]] || DEFAULT_FOLLOW; }
+    else { text = "Hmm, that's not in my résumé data, and I'd rather not guess. 🙂 Try asking about his experience, projects or skills, or email kalekarom00@gmail.com."; meta = 'no confident match · refusing to guess'; follow = DEFAULT_FOLLOW; }
+  }
+  await sleep(500 + Math.random() * 400);
+  typing.remove();
+  const m = addMsg('ai', '', meta);
+  const bub = m.querySelector('.bub');
+  const words = text.split(' ');
+  for (let w = 1; w <= words.length; w++) {
+    bub.textContent = words.slice(0, w).join(' ');
+    msgs.scrollTop = msgs.scrollHeight;
+    if (!RM) await new Promise(r => setTimeout(r, 22));
+  }
+  const f = document.createElement('div'); f.className = 'follow';
+  f.innerHTML = follow.map(x => `<button type="button" class="sug">${esc(x)}</button>`).join('');
+  m.appendChild(f); msgs.scrollTop = msgs.scrollHeight;
+  botBusy = false;
+}
+function greet() {
+  msgs.innerHTML = '';
+  const m = addMsg('ai', "Hi! 👋 I'm OmsaiBot. Ask me anything about Omsai: where he works, what he's built, or what tech he uses.", 'OmsaiBot');
+  const f = document.createElement('div'); f.className = 'follow';
+  f.innerHTML = ['Where does he work now?', 'What has he built with LLMs?', 'How many years of experience?', 'Tell me about TalendExit', 'Education?'].map(x => `<button type="button" class="sug">${esc(x)}</button>`).join('');
+  m.appendChild(f);
+}
+greet();
+msgs.addEventListener('click', e => { const b = e.target.closest('.sug'); if (b) ask(b.textContent); });
+$('#askForm').addEventListener('submit', e => { e.preventDefault(); const q = $('#askIn').value.trim(); if (!q) return; $('#askIn').value = ''; ask(q); });
+$('#botClear').addEventListener('click', () => { if (!botBusy) greet(); });
+const fab = $('#botFab'), win = $('#botWin'), tip = $('#botTip');
+let tipSeen = false;
+try { tipSeen = sessionStorage.getItem('botTip') === '1'; } catch (e) {}
+const hideTip = () => { tip.classList.remove('show'); try { sessionStorage.setItem('botTip', '1'); } catch (e) {} };
+function toggleBot(open = !win.classList.contains('open')) {
+  win.classList.toggle('open', open); fab.classList.toggle('open', open);
+  fab.setAttribute('aria-expanded', open); fab.setAttribute('aria-label', open ? 'Close chat' : 'Chat with OmsaiBot');
+  if (open) { hideTip(); msgs.scrollTop = msgs.scrollHeight; if (window.innerWidth > 760) setTimeout(() => $('#askIn').focus(), 200); }
+}
+fab.addEventListener('click', () => toggleBot());
+tip.addEventListener('click', e => { if (e.target.id === 'botTipX') hideTip(); else toggleBot(true); });
+window.addEventListener('keydown', e => { if (e.key === 'Escape' && win.classList.contains('open')) { toggleBot(false); fab.focus(); } });
+if (!tipSeen) setTimeout(() => { if (!win.classList.contains('open')) tip.classList.add('show'); setTimeout(hideTip, 9000); }, 6000);
+
+/* ---------- OutsmartAI/* ---------- OutsmartAI: Rock-Paper-Scissors vs an online-learning ensemble ---------- */
+(() => {
+  const E = ['✊', '✋', '✌️'], NAME = ['rock', 'paper', 'scissors'];
+  const beats = m => (m + 1) % 3;              // move that beats m
+  const res = (a, b) => a === b ? 0 : beats(b) === a ? 1 : -1; // +1 if a wins
+  let H, S;
+  const EXPERTS = [
+    { id: 'frequency', desc: 'your favourite move overall',
+      key: () => '' },
+    { id: 'markov-1', desc: 'what you play after your last move',
+      key: () => H.length ? 'm' + H.at(-1).u : null },
+    { id: 'markov-2', desc: 'what you play after your last two moves',
+      key: () => H.length > 1 ? 'mm' + H.at(-2).u + H.at(-1).u : null },
+    { id: 'win-stay/lose-shift', desc: 'how you react to winning or losing',
+      key: () => H.length ? 'o' + H.at(-1).u + H.at(-1).r : null },
+    { id: 'beat-the-bot', desc: 'whether you counter my last move',
+      key: () => H.length ? 'b' + H.at(-1).a : null },
+  ];
+  function reset() {
+    H = []; S = { you: 0, bot: 0, draw: 0, rates: [] };
+    EXPERTS.forEach(x => { x.tab = new Map(); x.score = 0; x.hits = []; });
+  }
+  function predict(x) {
+    const k = x.key(); const c = k == null ? null : x.tab.get(k);
+    const v = [1, 1, 1]; if (c) c.forEach((n, i) => v[i] += n);
+    const z = v[0] + v[1] + v[2];
+    return v.map(n => n / z);
+  }
+  const argmax = p => p.indexOf(Math.max(...p));
+  function decide() {
+    const preds = EXPERTS.map(predict);
+    let lead = 0;
+    EXPERTS.forEach((x, i) => { if (x.score > EXPERTS[lead].score) lead = i; });
+    const p = preds[lead];
+    const guess = H.length < 3 ? Math.random() * 3 | 0 : argmax(p);
+    return { preds, lead, p, guess, ai: H.length < 3 ? Math.random() * 3 | 0 : beats(guess) };
+  }
+  function learn(dec, u) {
+    EXPERTS.forEach((x, i) => {
+      const hit = argmax(dec.preds[i]) === u ? 1 : 0;
+      x.score = x.score * .82 + (hit ? 1 : -.5);
+      x.hits.push(hit); if (x.hits.length > 10) x.hits.shift();
+      const k = x.key(); if (k == null) return;
+      let c = x.tab.get(k); if (!c) x.tab.set(k, c = [0, 0, 0]);
+      c[u]++;
+    });
+  }
+
+  function renderBrain(dec, u) {
+    const p = dec ? dec.p : [1 / 3, 1 / 3, 1 / 3];
+    const top = argmax(p);
+    $('#gPred').innerHTML = p.map((v, i) =>
+      `<div class="pbar${dec && i === top ? ' top' : ''}"><span class="e">${E[i]}</span><span class="b"><i style="width:${(v * 100).toFixed(0)}%"></i></span><span class="v">${(v * 100).toFixed(0)}%</span></div>`).join('');
+    $('#gPredNote').innerHTML = !dec ? 'waiting…' : H.length <= 3 ? 'warming up (random)' :
+      (dec.guess === u ? `<b style="color:var(--ai)">read you ✓</b>` : `<b style="color:var(--java)">you surprised it</b>`);
+    $('#gExperts').innerHTML = EXPERTS.map((x, i) => {
+      const acc = x.hits.length ? x.hits.reduce((a, b) => a + b, 0) / x.hits.length : 0;
+      return `<div class="expert${dec && i === dec.lead && H.length > 3 ? ' lead' : ''}" title="${x.desc}"><span>${x.id}</span><span class="b"><i style="width:${(acc * 100).toFixed(0)}%"></i></span><span class="v">${x.hits.length ? (acc * 100).toFixed(0) + '%' : '–'}</span></div>`;
+    }).join('');
+    const m1 = EXPERTS[1].tab;
+    let max = 1; for (let a = 0; a < 3; a++) for (let b = 0; b < 3; b++) max = Math.max(max, (m1.get('m' + a) || [0, 0, 0])[b]);
+    let html = '<span></span>' + E.map(e => `<span class="h">${e}</span>`).join('');
+    for (let a = 0; a < 3; a++) {
+      html += `<span class="h">${E[a]}</span>`;
+      for (let b = 0; b < 3; b++) {
+        const n = (m1.get('m' + a) || [0, 0, 0])[b];
+        html += `<span class="c" style="background:rgba(248,152,32,${(.04 + .55 * n / max).toFixed(2)})">${n || ''}</span>`;
+      }
+    }
+    $('#gHeat').innerHTML = html;
+    const r = S.rates, w = 300, h = 64;
+    if (r.length > 1) {
+      const pts = r.map((v, i) => `${(i / (r.length - 1) * w).toFixed(1)},${(h - 4 - v * (h - 8)).toFixed(1)}`);
+      $('#gSpark').innerHTML = `<line class="mid" x1="0" x2="${w}" y1="${h - 4 - (h - 8) / 3}" y2="${h - 4 - (h - 8) / 3}"/><polygon class="ar" points="0,${h} ${pts.join(' ')} ${w},${h}"/><polyline class="ln" points="${pts.join(' ')}"/>`;
+    } else $('#gSpark').innerHTML = '';
+    $('#gAiRate').textContent = r.length ? `${(r.at(-1) * 100).toFixed(0)}% · dashed = 33% chance` : '–';
+  }
+  function renderScore() {
+    $('#gYou').textContent = S.you; $('#gBot').textContent = S.bot; $('#gDraw').textContent = S.draw; $('#gRound').textContent = H.length;
+    $('#gRate').textContent = H.length ? `your win rate: ${(S.you / H.length * 100).toFixed(0)}%` : 'your win rate: –';
+  }
+
+  let busy = false;
+  async function play(u) {
+    if (busy) return; busy = true;
+    $$('.move').forEach(b => b.disabled = true);
+    const dec = decide();
+    const hy = $('#hYou'), hb = $('#hBot');
+    hy.className = 'hand'; hb.className = 'hand opp';
+    hy.textContent = '✊'; hb.textContent = '✊';
+    if (!RM) { void hy.offsetWidth; hy.classList.add('shake'); hb.classList.add('shake'); await sleep(460); }
+    hy.textContent = E[u]; hb.textContent = E[dec.ai];
+    const r = res(u, dec.ai);
+    learn(dec, u);
+    H.push({ u, a: dec.ai, r: r + 1 });
+    if (r > 0) S.you++; else if (r < 0) S.bot++; else S.draw++;
+    S.rates.push(S.bot / H.length);
+    hy.className = 'hand' + (r > 0 ? ' win' : r < 0 ? ' lose' : '');
+    hb.className = 'hand opp' + (r < 0 ? ' win' : r > 0 ? ' lose' : '');
+    const v = $('#gVerdict');
+    v.className = 'verdict ' + (r > 0 ? 'w' : r < 0 ? 'l' : 'd');
+    v.textContent = r > 0 ? 'You win this one.' : r < 0 ? 'AI wins. It saw that coming.' : 'Draw.';
+    $('#gSub').innerHTML = H.length <= 3 ? 'warming up: the first 3 moves are random'
+      : `it predicted <b>${NAME[dec.guess]}</b> (${(dec.p[dec.guess] * 100).toFixed(0)}%) via <b>${EXPERTS[dec.lead].id}</b> → played <b>${NAME[dec.ai]}</b>`;
+    renderBrain(dec, u); renderScore();
+    if (H.length === 30) $('#gSub').innerHTML += `<br>30 rounds done: you won ${(S.you / 30 * 100).toFixed(0)}% · ${S.you / 30 > 1 / 3 ? 'impressively unpredictable!' : 'the AI has you figured out.'}`;
+    busy = false;
+    $$('.move').forEach(b => b.disabled = false);
+  }
+  $$('.move').forEach(b => b.addEventListener('click', () => play(+b.dataset.m)));
+  let gameVisible = false;
+  new IntersectionObserver(es => es.forEach(e => gameVisible = e.isIntersecting), { threshold: .3 }).observe($('#game .arena'));
+  window.addEventListener('keydown', e => {
+    if (!gameVisible || !booted || /input|textarea/i.test(document.activeElement.tagName)) return;
+    const m = { '1': 0, '2': 1, '3': 2, r: 0, p: 1, s: 2 }[e.key.toLowerCase()];
+    if (m != null) play(m);
+  });
+  $('#gReset').addEventListener('click', () => {
+    reset(); renderBrain(null); renderScore();
+    $('#hYou').textContent = '✊'; $('#hBot').textContent = '🤖'; $('#hYou').className = 'hand'; $('#hBot').className = 'hand opp';
+    $('#gVerdict').className = 'verdict'; $('#gVerdict').textContent = 'Make your move';
+    $('#gSub').textContent = 'the AI has no data on you… yet';
+  });
+  reset(); renderBrain(null); renderScore();
+})();
+
+/* ---------- visitor counter (free Abacus API, one hit per browser session) ---------- */
+(() => {
+  const local = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname) || location.protocol === 'file:';
+  const KEY = local ? 'visits-dev' : 'visits';
+  let counted = false;
+  try { counted = sessionStorage.getItem('portfolio-visit-counted') === '1'; } catch (e) {}
+  fetch(`https://abacus.jasoncameron.dev/${counted ? 'get' : 'hit'}/omsai-kalekar-portfolio/${KEY}`)
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(d => {
+      if (typeof d.value !== 'number') return;
+      $$('.vcn').forEach(e => e.textContent = d.value.toLocaleString('en-US'));
+      $$('.vc').forEach(e => e.hidden = false);
+      try { sessionStorage.setItem('portfolio-visit-counted', '1'); } catch (e) {}
+    })
+    .catch(() => {});
+})();
+
+/* ---------- contact ---------- */
+$('#mailForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const name = $('#fName').value.trim(), co = $('#fCo').value.trim(), msg = $('#fMsg').value.trim();
+  const subject = `Let's collaborate · ${name}${co ? ' (' + co + ')' : ''}`;
+  window.location.href = `mailto:kalekarom00@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(msg + '\n\n- ' + name)}`;
+  $('#resp').innerHTML = '<span class="ok">HTTP/1.1 202 Accepted</span> · opening your mail client…';
+});
+})();
+</script>
+</body>
+</html>
